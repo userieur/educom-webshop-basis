@@ -28,7 +28,7 @@
                 <mxCell id="16" value="Return thank you" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
                     <mxGeometry x="220" y="230" width="70" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="18" value="Aanhef" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="18" value="Aanhef" style="whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
                     <mxGeometry x="400" y="80" width="80" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="20" value="Make new form with blank fields; except for validated input" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
@@ -37,25 +37,25 @@
                 <mxCell id="21" value="Return new form" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
                     <mxGeometry x="290" y="330" width="70" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="23" value="Validate&lt;br&gt;Input for empty fields/invalied input" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="23" value="Validate&lt;br&gt;Input for empty fields/invalied input" style="whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
                     <mxGeometry x="220" y="100" width="140" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="26" value="Voornaam" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="26" value="Voornaam" style="whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
                     <mxGeometry x="400" y="120" width="80" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="27" value="Achtern" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="27" value="Achtern" style="whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
                     <mxGeometry x="400" y="160" width="80" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="28" value="E-Mail" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="28" value="E-Mail" style="whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
                     <mxGeometry x="400" y="200" width="80" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="29" value="Phone" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="29" value="Phone" style="whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
                     <mxGeometry x="400" y="240" width="80" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="30" value="Preference" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="30" value="Preference" style="whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
                     <mxGeometry x="400" y="280" width="80" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="31" value="Comment" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="31" value="Comment" style="whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
                     <mxGeometry x="400" y="320" width="80" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="33" value="Not all data is validated" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
