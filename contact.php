@@ -1,4 +1,16 @@
 <!DOCTYPE html>
+<html>
+<body>
+
+<?php
+echo "My first PHP script!";
+?>
+
+</body>
+</html> 
+
+<!-- 
+<!DOCTYPE html>
 <html lang="nl-NL">
     <head>
         <title>Contact</title>
@@ -48,4 +60,4 @@
         </div>    
     </body>
 </html>
-<!-- 
+-->
