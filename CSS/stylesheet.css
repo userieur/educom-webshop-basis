@@ -1,1 +1,9 @@
 /* Cascade Style Sheet for this website */
+body {
+    background-color:rgba(230, 186, 173, 0.733);
+  }
+  
+  h1 {
+    color:navy;
+    margin-left: 20px;
+  }
