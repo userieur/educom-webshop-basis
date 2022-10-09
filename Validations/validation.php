@@ -1,5 +1,5 @@
 <?php
-    function validate_names($value) {
+    function validateNames($value) {
         $error = "";
         if (empty($value)) {
             $error = "Name is required";
@@ -9,7 +9,7 @@
         return array("value"=> $value, "error"=> $error);
     }
 
-    function validate_email($value) {
+    function validateEmail($value) {
         $error = "";
         if (empty($value)) {
             $error = "E-mail address is required";
@@ -19,7 +19,7 @@
             return array("value"=> $value, "error"=> $error);
     }
 
-    function validate_phone($value) {
+    function validatePhone($value) {
         $error = "";
         if (empty($value)) {
             $error = "Phone is required";
@@ -29,7 +29,7 @@
         return array("value"=> $value, "error"=> $error);
     }
 
-    function validate_comment($value) {
+    function validateComment($value) {
         $error = "";
         if (empty($value)) {
             $error = "Please enter reasons";
@@ -37,7 +37,7 @@
         }
     }
 
-    function validate_input($fieldname) {
+    function validateInput($fieldname) {
         $data = "";
         if (array_key_exists($fieldName, $_POST)) {
             $data = $_POST[$fieldName];
@@ -49,16 +49,16 @@
         switch ($fieldname) {
             case 'fname':
             case 'lname':
-                $output = validate_names($data);
+                $output = validateNames($data);
                 break;
             case 'email':
-                $output = validate_email($data);
+                $output = validateEmail($data);
                 break;
             case 'phone':
-                $output = validate_phone($data);
+                $output = validatePhone($data);
                 break;
             case 'comment':
-                $output = validate_comment($data);
+                $output = validateComment($data);
                 break;
             case 'none':
             case 'pref':
@@ -78,7 +78,7 @@
         $allErrors = array();
         $noErrors = false;
         foreach ($fields as $fieldname) {
-            $output = validate_input($fieldname);
+            $output = validateInput($fieldname);
             $allValuesAndErrors += [$fieldName => $output];
             $allErrors[] = $output['error'];
         }
