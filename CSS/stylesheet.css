@@ -71,17 +71,17 @@ div {
   margin: left;
 }
 
-.footer {
+footer {
   height: 40px;
   background-color: black;
   color: white;
   position: fixed;
   bottom: 0;
-  width: 100%;
+  width: 800px;
   text-align: right;
 }
 
-.footer > p {
+footer > p {
   background-color: black;
   color: white;
   margin-right: 15px;
