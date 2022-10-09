@@ -7,5 +7,5 @@
     // } 
 
 
-         <option' . (isset($allValuesandErrors['sex']['value']) && $allValuesandErrors['sex']['value'] == "man") ? "selected" : "" . 'value="man">Dhr.</option>
+  //       <option' . (isset($allValuesandErrors['sex']['value']) && $allValuesandErrors['sex']['value'] == "man") ? "selected" : "" . 'value="man">Dhr.</option>
 ?>
