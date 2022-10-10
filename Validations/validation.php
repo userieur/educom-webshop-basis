@@ -37,7 +37,7 @@
         }
     }
 
-    function validateInput($fieldname) {
+    function validateInput($fieldName) {
         $data = "";
         if (array_key_exists($fieldName, $_POST)) {
             $data = $_POST[$fieldName];
@@ -46,7 +46,7 @@
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
 
-        switch ($fieldname) {
+        switch ($fieldName) {
             case 'fname':
             case 'lname':
                 $output = validateNames($data);
@@ -73,12 +73,14 @@
         return $output;
     }            
 
-    function checkForErrors($fields) {
+    function checkForErrors(iterable $fields) {
+        // func_get_args()
+        // echo var_dump($fields);
         $allValuesAndErrors = array();
         $allErrors = array();
         $noErrors = false;
-        foreach ($fields as $fieldname) {
-            $output = validateInput($fieldname);
+        foreach ($fields as $fieldName) {
+            $output = validateInput($fieldName);
             $allValuesAndErrors += [$fieldName => $output];
             $allErrors[] = $output['error'];
         }
