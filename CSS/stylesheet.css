@@ -124,6 +124,44 @@ footer > p {
   border: 1px solid #ddd;
 }
 
+/* Contactform styling */
+.contactform {
+  max-width: 800px;
+  display: block;
+}
+
+.contactform label {
+  margin: 5px 10px 5px 0;
+  font-size: 12px;
+  text-align: right;
+  /* width: 100px;
+  display: inline-block; */
+}
+
+.contactform label.field {
+  margin: 5px 10px 5px 0;
+  font-size: 12px;
+  text-align: right;
+  width: 100px;
+  display: inline-block;
+}
+
+.contactform input {
+  vertical-align: middle;
+  margin: 5px 10px 5px 0;
+  padding: 10px;
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+}
+
+.contactform select {
+  vertical-align: middle;
+  margin: 5px 10px 5px 0;
+  padding: 10px;
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+}
+
 select:required:invalid {
   color: gray;
 }

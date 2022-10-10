@@ -1,5 +1,5 @@
 <?php
-    require_once("Functions/functions.php");
+    require_once("Functions/pagebuilder.php");
     // echo ($_SERVER["PHP_SELF"]);
     // echo var_dump($_SERVER);
 
@@ -12,7 +12,16 @@
     //         echo $item . '<br>';
     //     }
     // }
-        
+    
+    $arr = array('first' => 'a', 'second' => 'b', );
+    $key = array_search ('a', $arr);
+    foreach($arr as $key => $value){
+        echo $key . ' ' . $value;
+        echo '<br>';
+        // echo key($arr);
+    }
+
+
     // doSome($test);
 
     $page = getRequestedPage();

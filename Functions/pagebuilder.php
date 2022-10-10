@@ -102,7 +102,7 @@
                 <li><a class="' . (($page == "registratie") ? "active" : "") . '"href="index.php?page=registratie">Registratie</a></li>
               </ul>';        
     }
-    
+
     function showContent($page) { 
         switch ($page) { 
             case 'home':
@@ -115,7 +115,7 @@
                 break;
             case 'contact':
                 require_once('contact.php');
-                showContactContent ();
+                showContactContent ($page);
                 break;
             case 'registratie':
                 require_once('registratie.php');

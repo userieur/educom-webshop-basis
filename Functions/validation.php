@@ -37,6 +37,9 @@
         }
     }
 
+    // van fieldname naar type (hetzelfde idee als bij formbuilder, scheelt opties)
+    // dus misschien type meegeven van parent functie, zodat fieldname (key) nog steeds gebruikt kan worden
+    // om post value op te halen
     function validateInput($fieldName) {
         $data = "";
         if (array_key_exists($fieldName, $_POST)) {
@@ -87,5 +90,13 @@
             $noErrors = true;
         }
         return array($allValuesAndErrors, $noErrors);
+    }
+
+    // deze moet nog
+    function formValidation($formArray) {
+        $keyArray = array();
+        foreach($formArray as $itemArray) {
+            $keyArray[] = $itemArray[0];
+        }
     }
 ?>
