@@ -86,7 +86,7 @@
                         <input
                             type="phone" id="phone" name="phone" pattern="[0-9]{2}[0-9]{8}|[0-9]{3}[0-9]{7}
                             value="' . (isset($phone['value']) ? $phone['value'] : "") . '"
-                            placeholder="0612345678 / 0101234567"
+                            placeholder="0612345678 / 0101234567">
                         <span class="error">' . (isset($phone['error']) ? $phone['error'] : "") . '</span><br>
 
                         <p>Ik word het liefst benaderd via:</p>
