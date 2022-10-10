@@ -49,6 +49,7 @@
         switch ($fieldName) {
             case 'fname':
             case 'lname':
+            case 'uname':
                 $output = validateNames($data);
                 break;
             case 'email':
@@ -74,8 +75,6 @@
     }            
 
     function checkForErrors(iterable $fields) {
-        // func_get_args()
-        // echo var_dump($fields);
         $allValuesAndErrors = array();
         $allErrors = array();
         $noErrors = false;

@@ -83,6 +83,10 @@
                 require_once('contact.php');
                 showContactHeader ();
                 break;
+            case 'registratie':
+                require_once('registratie.php');
+                showRegistratieHeader ();
+                break;
             default:
                 require_once('home.php');
                 showHomeHeader();
@@ -95,6 +99,7 @@
                 <li><a class="' . (($page == "home") ? "active" : "") . '"href="index.php?page=home">Home</a></li>
                 <li><a class="' . (($page == "about") ? "active" : "") . '"href="index.php?page=about">About</a></li>
                 <li><a class="' . (($page == "contact") ? "active" : "") . '"href="index.php?page=contact">Contact</a></li>
+                <li><a class="' . (($page == "registratie") ? "active" : "") . '"href="index.php?page=registratie">Registratie</a></li>
               </ul>';        
     }
     
@@ -111,6 +116,10 @@
             case 'contact':
                 require_once('contact.php');
                 showContactContent ();
+                break;
+            case 'registratie':
+                require_once('registratie.php');
+                showRegistratieContent ();
                 break;
             default:
                 require_once('home.php');
