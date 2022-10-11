@@ -13,13 +13,13 @@
     //     }
     // }
     
-    $arr = array('first' => 'a', 'second' => 'b', );
-    $key = array_search ('a', $arr);
-    foreach($arr as $key => $value){
-        echo $key . ' ' . $value;
-        echo '<br>';
-        // echo key($arr);
-    }
+    // $arr = array('first' => 'a', 'second' => 'b', );
+    // $key = array_search ('a', $arr);
+    // foreach($arr as $key => $value){
+    //     echo $key . ' ' . $value;
+    //     echo '<br>';
+    //     // echo key($arr);
+    // }
 
 
     // doSome($test);

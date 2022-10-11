@@ -1,5 +1,5 @@
 <?php
-    function validateNames($value) {
+    function validateText($value) {
         $error = "";
         if (empty($value)) {
             $error = "Name is required";
@@ -37,23 +37,33 @@
         }
     }
 
-    // van fieldname naar type (hetzelfde idee als bij formbuilder, scheelt opties)
-    // dus misschien type meegeven van parent functie, zodat fieldname (key) nog steeds gebruikt kan worden
-    // om post value op te halen
-    function validateInput($fieldName) {
+    // Eigenlijk wil ik zeker weten dat ik niet */![spatie] achtige characters er
+    // uit haal, en tegelijkertijd wel veilig..
+    function validatePassword($value) {
+        $error = "";
+        $check = $_POST['check'];
+        if (empty($value)) {
+            $error = "Please enter password";
+        } elseif ($value != $check) {
+            $error = "Password does not match"; 
+        }
+        return array("value"=> $value, "error"=> $error);
+    }
+
+    function validateInput($key, $type) {
         $data = "";
-        if (array_key_exists($fieldName, $_POST)) {
-            $data = $_POST[$fieldName];
+        // PHP_EOL . var_dump($key);
+        // PHP_EOL . var_dump($type);
+        if (array_key_exists($key, $_POST)) {
+            $data = $_POST[$key];
         }
         $data = trim($data);
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
 
-        switch ($fieldName) {
-            case 'fname':
-            case 'lname':
-            case 'uname':
-                $output = validateNames($data);
+        switch ($type) {
+            case 'text':
+                $output = validateText($data);
                 break;
             case 'email':
                 $output = validateEmail($data);
@@ -64,10 +74,12 @@
             case 'comment':
                 $output = validateComment($data);
                 break;
-            case 'none':
-            case 'pref':
-            case 'sex':
-            case 'story':
+            case 'password':
+                $output = validatePassword($data);
+                break;
+            case 'select':
+            case 'radio':
+            case 'textbox':
                 $output = array("value"=> $data, "error"=> "");
                 break;
             default:
@@ -77,13 +89,17 @@
         return $output;
     }            
 
-    function checkForErrors(iterable $fields) {
+    function checkForErrors(iterable $keyTypeArray) {
+        // var_dump($keyTypeArray);
         $allValuesAndErrors = array();
         $allErrors = array();
         $noErrors = false;
-        foreach ($fields as $fieldName) {
-            $output = validateInput($fieldName);
-            $allValuesAndErrors += [$fieldName => $output];
+        foreach ($keyTypeArray as $key => $type) {
+            // var_dump($key) . PHP_EOL;
+            // var_dump($type) . PHP_EOL;
+            $output = validateInput($key, $type);
+            $allValuesAndErrors += [$key => $output];
+            // var_dump($output);
             $allErrors[] = $output['error'];
         }
         if (implode("", $allErrors) == "") {
@@ -92,11 +108,13 @@
         return array($allValuesAndErrors, $noErrors);
     }
 
-    // deze moet nog
-    function formValidation($formArray) {
-        $keyArray = array();
+    function validateForm($formArray) {
+        // var_dump($formArray);
+        $keyTypeArray = array();
         foreach($formArray as $itemArray) {
-            $keyArray[] = $itemArray[0];
+            $keyTypeArray += [$itemArray[0] => $itemArray[1]];
         }
+        $output = checkForErrors($keyTypeArray);
+        return $output;
     }
 ?>
