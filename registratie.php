@@ -1,18 +1,43 @@
 <?php
+    
+    require_once("functions/validation.php");
+    require_once("functions/formbuilder.php");
+
     function showRegistratieHeader() {
         echo '<h1>Halloooooooo</h1>';
     }
 
-    function showRegistratieContent() {
-        echo '<h3>Lorem Ipsum</h3>
-              <div>
-                    <p>"Lorem ipsum dolor sit amet, consectetur <br> adipiscing elit, sed do eiusmod tempor 
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irdfgsdfgdfgdfgdzxure dolor in reprehenderit in voluptate velit esse cillum dolore 
-                    eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
-                    in culpa qui officia deserunt mollit anim id est laborum."</p>
-              </div>';
+    function showRegistratieContent($page) {
+        // $css             = should contain desired style for this form | use 'contactform' for default
+        // key              = unique
+        // type             = text / email / phone / select / radio / textbox / password
+        // label            = label (@select / @radio is for the group)
+        // placeholder      = placeholder (@select: standard option which cannot be selected @radio should be '')
+        // options          = ONLY for @radio & @select: array('option id/value' => "Printed Value")
+        //                    array('man' => "Mr.", woman = "Ms.") /
+        //                    array('tel' => "Telephone", 'mail' => "E-Mail")
+        $validForm = false;
+        $allValuesandErrors = "";
+        $css = 'contactform';
+        $formArray = array(
+            //    key            type         label                    placeholder / options
+            array('uname'      , 'text'     , 'Gebruikersnaam:'      , 'Jan'),
+            array('email'      , 'email'    , 'E-Mail:'              , 'j.v.d.steen@provider.com'),
+            array('pword'      , 'password' , 'Wachtwoord:'          , 'vul wachtwoord in'),
+            array('pwordcheck' , 'password' , 'Herhaal Wachtwoord:'  , 'herhaal wachtwoord'),
+        );
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $output = validateForm($formArray);
+            $allValuesandErrors = $output[0];
+            $validForm = $output[1];
+        }
+
+        if ($validForm) {
+            $message = 'You have registered';
+            showThankYou($allValuesandErrors, $formArray, $message);
+        } else {
+            showForm($page, $css, $formArray, $allValuesandErrors);
+        }
     }
 ?>
 

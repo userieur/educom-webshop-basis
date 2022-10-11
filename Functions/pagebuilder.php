@@ -119,7 +119,7 @@
                 break;
             case 'registratie':
                 require_once('registratie.php');
-                showRegistratieContent ();
+                showRegistratieContent ($page);
                 break;
             default:
                 require_once('home.php');

@@ -11,7 +11,7 @@
     function showContactContent($page) {
         // $css             = should contain desired style for this form | use 'contactform' for default
         // key              = unique
-        // type             = text / email / phone / select / radio / textbox
+        // type             = text / email / phone / select / radio / textbox / password
         // label            = label (@select / @radio is for the group)
         // placeholder      = placeholder (@select: standard option which cannot be selected @radio should be '')
         // options          = ONLY for @radio & @select: array('option id/value' => "Printed Value")

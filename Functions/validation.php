@@ -16,7 +16,7 @@
         } elseif (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
             $error = "Please enter a correct e-mail address";
         }
-            return array("value"=> $value, "error"=> $error);
+        return array("value"=> $value, "error"=> $error);
     }
 
     function validatePhone($value) {
@@ -25,6 +25,7 @@
             $error = "Phone is required";
         } elseif (!is_numeric($value)) {
             $error = "Please enter a correct phone number";
+
         }
         return array("value"=> $value, "error"=> $error);
     }
@@ -37,50 +38,57 @@
         }
     }
 
-    // Eigenlijk wil ik zeker weten dat ik niet */![spatie] achtige characters er
-    // uit haal, en tegelijkertijd wel veilig..
-    function validatePassword($value) {
+    function validatePassword($key, $value) {
         $error = "";
-        $check = $_POST['check'];
-        if (empty($value)) {
-            $error = "Please enter password";
-        } elseif ($value != $check) {
-            $error = "Password does not match"; 
+        if (str_contains($key, "check")) {
+            $firstEntry = $_POST[substr($key, 0, -5)];
+            $firstEntry = trim($firstEntry);
+            $firstEntry = stripslashes($firstEntry);
+            $firstEntry = htmlspecialchars($firstEntry);
+            if (empty($value)) {
+                $error = "Please repeat password";
+            } elseif ($value != $firstEntry) {
+                $error = "Password does not match"; 
+            }    
+        } else { 
+            if (empty($value)) {
+                $error = "Please enter password";
+            } elseif (!preg_match("/^[a-zA-Z-' ]*$/",$value)) {
+                $error = "Only letters and white space allowed"; 
+            }
         }
         return array("value"=> $value, "error"=> $error);
     }
 
     function validateInput($key, $type) {
-        $data = "";
-        // PHP_EOL . var_dump($key);
-        // PHP_EOL . var_dump($type);
+        $value = "";
         if (array_key_exists($key, $_POST)) {
-            $data = $_POST[$key];
+            $value = $_POST[$key];
         }
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
+        $value = trim($value);
+        $value = stripslashes($value);
+        $value = htmlspecialchars($value);
 
         switch ($type) {
             case 'text':
-                $output = validateText($data);
+                $output = validateText($value);
                 break;
             case 'email':
-                $output = validateEmail($data);
+                $output = validateEmail($value);
                 break;
             case 'phone':
-                $output = validatePhone($data);
+                $output = validatePhone($value);
                 break;
             case 'comment':
-                $output = validateComment($data);
+                $output = validateComment($value);
                 break;
             case 'password':
-                $output = validatePassword($data);
+                $output = validatePassword($key, $value);
                 break;
             case 'select':
             case 'radio':
             case 'textbox':
-                $output = array("value"=> $data, "error"=> "");
+                $output = array("value"=> $value, "error"=> "");
                 break;
             default:
                 $output = 'what you doing';
@@ -90,16 +98,12 @@
     }            
 
     function checkForErrors(iterable $keyTypeArray) {
-        // var_dump($keyTypeArray);
         $allValuesAndErrors = array();
         $allErrors = array();
         $noErrors = false;
         foreach ($keyTypeArray as $key => $type) {
-            // var_dump($key) . PHP_EOL;
-            // var_dump($type) . PHP_EOL;
             $output = validateInput($key, $type);
             $allValuesAndErrors += [$key => $output];
-            // var_dump($output);
             $allErrors[] = $output['error'];
         }
         if (implode("", $allErrors) == "") {
@@ -109,7 +113,6 @@
     }
 
     function validateForm($formArray) {
-        // var_dump($formArray);
         $keyTypeArray = array();
         foreach($formArray as $itemArray) {
             $keyTypeArray += [$itemArray[0] => $itemArray[1]];

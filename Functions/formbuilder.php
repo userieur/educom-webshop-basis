@@ -13,10 +13,7 @@
     }
 
     function showFormItems($array, $allValuesandErrors) {
-        // echo var_dump($array);
-        // echo print_r($array);
         foreach($array as $item){
-            // echo print_r($item);
             $key = $item[0];
             $type = $item[1];
             $label = $item[2];
@@ -51,7 +48,7 @@
                 echo '<p>' . $label . '</p>' . PHP_EOL;
                 break;
             case 'textbox':
-                echo '<label for="' . $key . '">' . $label . '</label>' . PHP_EOL;
+                echo '<label for="' . $key . '">' . $label . '</label><br>' . PHP_EOL;
                 break;
             case 'password':
                 break;
@@ -93,12 +90,9 @@
                 break;
             case 'password':
                 echo '<label class="field" for="' . $key . '">' . $label . '</label>' . PHP_EOL;
-                echo '<input required type="' . $type . '" id="' . $key . '" name="' . $key . '" 
-                             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
-                             title="Must contain at least one number and one uppercase 
-                             and lowercase letter, and at least 8 or more characters"';
-                echo '<label class="field" for="check">Repeat password:</label>' . PHP_EOL;
-                echo '<input required type="textbox" id="check" name="check"';
+                echo '<input required type="' . $type . '" id="' . $key . '" name="' . $key . '"' ;
+                            // . ' pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"'
+                            // . ' title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"';
                 break;
             default:
                 break;
@@ -113,9 +107,14 @@
         echo '<h3>' . $message . '</h3>
               <h5>The data you have entered:</h5>
               <div>';
+        // var_dump($allValuesandErrors);
         foreach($formArray as $item) {
             $key = $item[0];
+            $type = $item[1];
             $label = $item[2];
+            if ($type == 'password') {
+                continue;
+            }
             echo '<p>' . $label . '</p><br>' . $allValuesandErrors[$key]['value'];
         echo '</div>';
         }
