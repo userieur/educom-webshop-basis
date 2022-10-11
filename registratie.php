@@ -33,6 +33,10 @@
         }
 
         if ($validForm) {
+            // Check bestaande data
+            // Als het nog niet bestaad creeer nieuwe entry en stuur dank pagina
+            // Anders is allvaluesanderrors email email bestaat al
+            
             $message = 'You have registered';
             showThankYou($allValuesandErrors, $formArray, $message);
         } else {

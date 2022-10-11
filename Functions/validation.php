@@ -97,6 +97,13 @@
         return $output;
     }            
 
+    function checkDatabase ($key, $database) {
+        // open database
+        // check entry voor 
+        // finduser by email
+        // save user
+    }
+
     function checkForErrors(iterable $keyTypeArray) {
         $allValuesAndErrors = array();
         $allErrors = array();
