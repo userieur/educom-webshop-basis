@@ -21,6 +21,27 @@
         return isset($value) ? $value : $default;  
     }
 
+    function processRequest($page) {
+        switch ($page) {
+            case 'contact':
+                //contactshit
+                break;
+            case 'registratie':
+                //regit
+                break;
+            case 'login':
+                //login
+                break;
+            case 'logout':
+                //logoout
+                break;
+            default:
+                //default
+                break;
+        return output;
+        }
+    }
+
     // Constructing the requested page + all functions
     function showResponsePage($page, $pageTitle) {
         beginDocument(); 
