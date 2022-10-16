@@ -1,5 +1,5 @@
 <?php
-    
+
     function varCheck ($value) {
         if (isset($value)) {
             $output = $value;
@@ -90,7 +90,7 @@
 
     // SESSION MANAGER
     function doLoginUser($userInfo) {
-        session_start();
+        // session_start();
         $_SESSION['user'] = $userInfo[1];
         $_SESSION['email'] = $userInfo[0];
         $_SESSION['password'] = $userInfo[2];
@@ -110,7 +110,7 @@
 
     function doLogoutUser() {
         session_unset();
-        session_destroy();
+        // session_destroy();
     }
 
     // DATA

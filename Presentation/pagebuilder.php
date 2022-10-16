@@ -167,7 +167,7 @@
         } else {
             echo '<ul class="menu">
             <li><a class="' . (($page == "userpage") ? "active" : "") . '"href="index.php?page=userpage">UserPage</a></li>
-            <li><a href="" onclick=<?php session_destroy()?>Loguit</a></li>
+            <li><a class="' . (($page == "loguit") ? "active" : "") . '"href="index.php?page=loguit">Loguit</a></li>
           </ul>';  
         }
     }

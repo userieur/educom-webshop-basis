@@ -12,6 +12,10 @@
         $page = $processed['page'];
         $data = $processed['data'];
     }
+    if ($page == 'loguit') {
+        doLogoutUser();
+        $page = 'home';
+    }
     $pageTitle = createTitle($page);
     showResponsePage($page, $pageTitle, $data);
 
@@ -19,5 +23,5 @@
     // echo '<br> Ik ben bij ************ : <br>';
     // var_dump($*********);
 
-    var_dump($_SESSION);
+    // var_dump($_SESSION);
 ?>
