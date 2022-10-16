@@ -12,7 +12,6 @@
             $requested_page = getUrlVar('page','home'); 
         } 
         return $requested_page;
-        // returns name of page, such as 'about', or 'home' if page is invalid 
     }
 
     function getPostVar($key, $default='') { 
@@ -57,6 +56,9 @@
                 $data = validateForm($formArray, $fileString);
                 if ($data['validForm']) {
                     $page = 'home';
+                    $email = $data['email']['value'];
+                    $userInfo = findUserByEmail($fileString, $email);
+                    doLoginUser($userInfo);
                     $data = NULL;
                 }
                 break;
@@ -101,6 +103,7 @@
     function showBodySection($page, $data) {
         echo '    <body>' . PHP_EOL; 
         showHeader($page);
+        showSessionMenu($page);
         showMenu($page); 
         showContent($page, $data); 
         showFooter(); 
@@ -130,9 +133,15 @@
                 showThanksHeader();
                 break;
             case 'login':
+                showLoginHeader();
+                break;
+            case 'userpage';
+                showUserHeader();
                 break;
             default:
-                echo 'oepsiedasy';
+                $page = 'home';
+                require_once('Pages/'.$page.'.php');
+                showHomeHeader();
                 break;
         $pageString = 'Pages/'.$page.'.php';
         require_once($pageString);
@@ -146,9 +155,21 @@
                 <li><a class="' . (($page == "home") ? "active" : "") . '"href="index.php?page=home">Home</a></li>
                 <li><a class="' . (($page == "about") ? "active" : "") . '"href="index.php?page=about">About</a></li>
                 <li><a class="' . (($page == "contact") ? "active" : "") . '"href="index.php?page=contact">Contact</a></li>
-                <li><a class="' . (($page == "registratie") ? "active" : "") . '"href="index.php?page=registratie">Registratie</a></li>
-                <li><a class="' . (($page == "login") ? "active" : "") . '"href="index.php?page=login">Login</a></li>
               </ul>';        
+    }
+
+    function showSessionMenu($page) {
+        if (isUserLoggedIn() == false) {
+            echo '<ul class="menu">
+            <li><a class="' . (($page == "registratie") ? "active" : "") . '"href="index.php?page=registratie">Registratie</a></li>
+            <li><a class="' . (($page == "login") ? "active" : "") . '"href="index.php?page=login">Login</a></li>
+          </ul>'; 
+        } else {
+            echo '<ul class="menu">
+            <li><a class="' . (($page == "userpage") ? "active" : "") . '"href="index.php?page=userpage">UserPage</a></li>
+            <li><a href="" onclick=<?php session_destroy()?>Loguit</a></li>
+          </ul>';  
+        }
     }
 
     function showContent($page, $data) { 
@@ -177,6 +198,9 @@
             case 'login':
                 $data = $data ?? getLoginData()['formArray'];
                 showLoginContent ($page, $data);
+                break;
+            case 'userpage';
+                showUserContent();
                 break;
             default:
                 require_once('Pages/home.php');

@@ -1,6 +1,7 @@
 <?php
     require_once("Presentation/pagebuilder.php");
     require_once("Business/basics.php");
+    session_start();
     // echo ($_SERVER["PHP_SELF"]);
     // echo var_dump($_SERVER);
 
@@ -8,11 +9,8 @@
     $page = getRequestedPage();
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $processed = processRequest($page);
-        // var_dump($processed);
         $page = $processed['page'];
-        // echo($page);
         $data = $processed['data'];
-        // var_dump($data);
     }
     $pageTitle = createTitle($page);
     showResponsePage($page, $pageTitle, $data);
@@ -21,5 +19,5 @@
     // echo '<br> Ik ben bij ************ : <br>';
     // var_dump($*********);
 
-
+    var_dump($_SESSION);
 ?>
