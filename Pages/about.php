@@ -1,5 +1,4 @@
 <?php
-    session_start();
     function showAboutHeader () {
         echo '<h1>About me</h1>';
     }
