@@ -3,6 +3,10 @@
         echo '<h1>Salutaties</h1>';
     }
 
+    function getHomeTitle() {
+        return 'Home is where you feel safe';
+    }
+
     function showHomeContent() {
         echo '<h3>Lorem Ipsum</h3>
               <div>

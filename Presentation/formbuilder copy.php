@@ -1,8 +1,8 @@
 <?php
 
-    function showForm($page, $css, $array, $allValuesandErrors) {
+    function showForm($page, $css, $data) {
             showFormStart($page, $css);
-            showFormItems($array, $allValuesandErrors);
+            showFormItems($data);
             showFormEnd();
         }
 
@@ -12,14 +12,14 @@
                 <input type="hidden" id="page" name="page" value="' . $page . '">' . PHP_EOL . PHP_EOL;
     }
 
-    function showFormItems($array, $allValuesandErrors) {
-        foreach($array as $item){
-            $key = $item[0];
-            $type = $item[1];
-            $label = $item[2];
-            isset($item[3]) ? $placeholder = $item[3] : $placeholder = "";
-            isset($item[4]) ? $options = $item[4] : $options = "";
-            showFormItem($key, $type, $label, $placeholder, $options, $allValuesandErrors);
+    function showFormItems($data) {
+        foreach($formArray as $key => $item){
+            showFormItem($key, $item, $allValuesandErrors);
+            $key = $key;
+            $type = $item['type'];
+            $label = $item['label'];
+            $placeholder = $item['placeholder'] ?? "";
+            $options = $item['options'] ?? "";
         }   
     }
 
@@ -30,13 +30,15 @@
     }
 
 
-    function showFormItem($key, $type, $label, $placeholder, $options, $allValuesandErrors) {
-        createLabel($key, $type, $label);
-        createInputField($key, $type, $label, $placeholder, $options, $allValuesandErrors);
+    function showFormItem($key, $item, $allValuesandErrors) {
+        createLabel($key, $item);
+        createInputField($key, $item, $allValuesandErrors);
         createSpan($key, $allValuesandErrors);
     }
 
-    function createLabel($key, $type, $label) {
+    function createLabel($key, $item) {
+        $type = $item['type']
+        $label = $item['label']
         switch ($type) {
             case 'text':
             case 'email':

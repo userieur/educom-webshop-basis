@@ -3,6 +3,10 @@
         echo '<h1>About me</h1>';
     }
 
+    function getAboutTitle() {
+        return 'About meeeeeee';
+    }
+    
     function showAboutContent() {
         echo '<h3>Beschrijving</h3>
                <div>
