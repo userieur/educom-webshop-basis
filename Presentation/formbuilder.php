@@ -17,7 +17,7 @@ function showForm($page, $css, $data) {
         foreach($data as $key => $items){
             switch($key) {
                 case 'validForm':
-                    var_dump($data['validForm']);
+                    // var_dump($data['validForm']);
                     break;
                 default:
                     // print_r($items);
